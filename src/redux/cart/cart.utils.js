@@ -7,3 +7,9 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
 
   return [...cartItems, { ...cartItemToAdd, quantity: 1 }];
 };
+
+export const getCartItemsQuantity = (cartItems) => {
+  return cartItems.reduce((prev, curr) => {
+    return prev + curr.quantity;
+  }, 0);
+};
