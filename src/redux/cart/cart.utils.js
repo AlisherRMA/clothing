@@ -13,3 +13,9 @@ export const getCartItemsQuantity = (cartItems) => {
     return prev + curr.quantity;
   }, 0);
 };
+
+export const getCartItemsTotalPrice = (cartItems) => {
+  return cartItems.reduce((prev, curr) => {
+    return prev + curr.quantity * curr.price;
+  }, 0);
+};
