@@ -9,15 +9,12 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
 };
 
 export const getCartItemsQuantity = (cartItems) => {
-  console.log({ cartItems });
-  if (!cartItems || !cartItems.length) return 555;
   return cartItems.reduce((prev, curr) => {
     return prev + curr.quantity;
   }, 0);
 };
 
 export const getCartItemsTotalPrice = (cartItems) => {
-  if (!cartItems || !cartItems.length) return 9999;
   return cartItems.reduce((prev, curr) => {
     return prev + curr.quantity * curr.price;
   }, 0);
@@ -28,10 +25,9 @@ export const removeItemFromCart = (cartItems, item) => {
 };
 
 export const removeItem = (cartItems, cartItemToRemove) => {
-  return cartItems;
-  // const existingCartItem = cartItems.find((cartItem) => cartItem.id === cartItemToRemove.id);
+  const existingCartItem = cartItems.find((cartItem) => cartItem.id === cartItemToRemove.id);
 
-  // if (existingCartItem.quantity === 1) return removeItemFromCart(cartItems, cartItemToRemove);
+  if (existingCartItem.quantity === 1) return removeItemFromCart(cartItems, cartItemToRemove);
 
-  // return cartItems.map((cartItem) => (cartItem.id === cartItemToRemove.id ? { ...cartItem, quantity: cartItem.quantity - 1 } : cartItem));
+  return cartItems.map((cartItem) => (cartItem.id === cartItemToRemove.id ? { ...cartItem, quantity: cartItem.quantity - 1 } : cartItem));
 };
