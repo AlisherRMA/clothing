@@ -9,7 +9,7 @@ import "./collection.styles.scss";
 
 const CollectionPage = () => {
   const params = useParams();
-  const collection = useSelector((state) => selectCollection(params.collectionId)(state));
+  const collection = useSelector((state) => selectCollection(params?.collectionId)(state));
   const { title, items } = collection;
 
   return (
